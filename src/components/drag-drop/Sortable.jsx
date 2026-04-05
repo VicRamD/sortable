@@ -10,16 +10,25 @@ import {useSortable} from '@dnd-kit/react/sortable';
 } */
 
 function Sortable({ id, index, column }) {
-  const [element, setElement] = useState(null);
-  const handleRef = useRef(null);
+  //const [element, setElement] = useState(null);
+  //const handleRef = useRef(null);
   
-  const { isDragging } = useSortable({ id, index, element, handle: handleRef, 
+  const { ref, handleRef, isDragging } =  useSortable({ 
+    id, 
+    index, 
     group: column,
     type: 'item',
-    accept: ['item'], });
+    accept: ['item'], 
+  });
+
+  /*useSortable({ id, index, element, handle: handleRef, 
+    group: column,
+    type: 'item',
+    accept: ['item'], });*/
 
   return (
-    <li ref={setElement} className="item" data-shadow={isDragging || undefined}>
+    <li ref={ref} className="item" data-shadow={isDragging || undefined}>
+      {/*<li ref={setElement} className="item" data-shadow={isDragging || undefined}></li>*/}
       {id}
       <button ref={handleRef} className="handle" />
     </li>

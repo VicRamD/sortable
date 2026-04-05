@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useState } from 'react';
 import { DragDropProvider } from '@dnd-kit/react';
 //import { useSortable } from '@dnd-kit/react/sortable';
 import { move } from '@dnd-kit/helpers';
@@ -17,7 +17,8 @@ export default function SortableSection() {
   return (
     <DragDropProvider
       onDragEnd={(event) => {
-        setItems((items) => move(items, event));
+        setItems((prev) => move(prev, event));
+        //setItems((items) => move(items, event));
       }}
     >
 
@@ -25,7 +26,7 @@ export default function SortableSection() {
           {Object.entries(items).map(([column, items]) => (
               <SortableColumn key={column} id={column}>
                 {items.map((id, index) => (
-                  <Sortable key={id} id={id} index={index} />
+                  <Sortable key={id} id={id} index={index}/>
                   ))}
               </SortableColumn>
           ))}

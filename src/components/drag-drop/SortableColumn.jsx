@@ -10,9 +10,9 @@ function SortableColumn({children, id}) {
   });
 
   return (
-    <div ref={ref} className='flex flex-col gap-2.5 p-5 min-w-50 bg-amber-400 rounde-xl'>
+    <ul ref={ref} className='flex flex-col gap-2.5 p-5 min-w-50 bg-amber-400 rounde-xl'>
       {children}
-    </div>
+    </ul>
   );
 }
 
