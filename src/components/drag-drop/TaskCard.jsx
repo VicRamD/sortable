@@ -1,15 +1,33 @@
-import {useDraggable} from '@dnd-kit/react';
+//import {useDraggable} from '@dnd-kit/react';
+import {useSortable} from '@dnd-kit/react/sortable';
+import { useEffect } from 'react';
 
-
-function TaskCard({task}) {
-  const {ref} = useDraggable({
+function TaskCard({task, index, column}) {
+  /* const {ref} = useDraggable({
     id: task.id
+  }); */
+
+  const { ref, handleRef, isDragging } =  useSortable({ 
+    id: task.id, 
+    index, 
+    group: column,
+    type: 'item',
+    accept: ['item'], 
   });
 
+  /*useEffect(()=> {
+    console.log("En task");
+    console.log(task)
+  }, [task]); */
+
   return (
-    <div ref={ref} className="cursor-grab rounded-lg bg-white dark:bg-neutral-700 radiation:bg-radiation-700 p-4 shadow-sm hover:shadow-md">
-        <h3 className="font-medium dark:text-neutral-100 radiation:text-radiation-50">{task.title}</h3>
-        <p className="mt-2 text-sm dark:text-neutral-400 radiation:text-radiation-100">{task.description}</p>
+    <div ref={ref} className="item" data-shadow={isDragging || undefined}>
+    {/*<div ref={ref} className="cursor-grab rounded-lg bg-white dark:bg-neutral-700 radiation:bg-radiation-700 p-4 shadow-sm hover:shadow-md">*/}
+        <div className='truncate'>
+            <h3 className="font-medium dark:text-neutral-100 radiation:text-radiation-50">{task.title}</h3>
+            <p className="mt-2 text-sm dark:text-neutral-400 radiation:text-radiation-100">{task.description}</p>
+        </div>
+        <button ref={handleRef} className="handle" />
     </div>
     
   );
