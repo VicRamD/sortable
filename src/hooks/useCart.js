@@ -11,7 +11,7 @@ export const useCart = () => {
 }
 
 export const useShoppingCartlist = (listName) => {
-    //listName es el nombre con el que está guardado en localStoraf
+    //listName es el nombre con el que está guardado en localStorage
 
      //estado de el carrito de productos
     //recuperar lista del local storage (si existe)

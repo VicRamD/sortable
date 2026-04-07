@@ -48,7 +48,6 @@
 [[[[[[[[[[[[
 ****************/
 body {
-  padding: 1em;
   font-family: system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
@@ -71,7 +70,7 @@ body {
   padding: 0 20px;
   border: none;
   gap: 10px;
-  background-color: rgb(255, 255, 255);
+  /*background-color: rgb(255, 255, 255); */
   border-radius: 6px;
   font-size: 14px !important;
   font-weight: 300;
